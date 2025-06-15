@@ -90,7 +90,7 @@ guiltometer/
 - Telegram reminders via bot
 
 ---
-[User Stories](https://docs.google.com/spreadsheets/d/10L9mRiL6wwwBSIULxfnbVBYAgJmrwtWXiMflXBZyWOg/edit?usp=sharing)
+Check this link out for the user stories: [User Stories](https://docs.google.com/spreadsheets/d/10L9mRiL6wwwBSIULxfnbVBYAgJmrwtWXiMflXBZyWOg/edit?usp=sharing)
 ---
 
 ## 🙌 Contribution

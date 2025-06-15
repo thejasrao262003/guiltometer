@@ -26,6 +26,7 @@ Define and create the following tables using SQLAlchemy or Alembic:
 #### 📌 `users`
 - id (UUID)
 - email
+- api_key (TEXT) ← personal Gemini API key for each user
 - created_at
 
 #### 📌 `tasks`
@@ -97,5 +98,3 @@ Define and create the following tables using SQLAlchemy or Alembic:
 → ~1–1.5 hours x 5 weekdays = manageable
 
 ---
-
-Let me know when you're ready to move to Week 2!

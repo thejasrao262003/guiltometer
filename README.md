@@ -41,9 +41,9 @@ guiltometer/
 ## 🗓️ Weekly Goals
 
 ### ✅ Week 1 – Setup
-- [ ] Initialize Git repo
-- [ ] Set up FastAPI + SQLAlchemy + PostgreSQL
-- [ ] Design schema: `users`, `tasks`, `logs`, `reports`, `roadmaps`
+- [x] Initialize Git repo
+- [x] Set up FastAPI + SQLAlchemy + PostgreSQL
+- [x] Design schema: `users`, `tasks`, `logs`, `reports`, `roadmaps`
 
 ### ✅ Week 2 – Logging System
 - [ ] Build API: create task, log data, get logs

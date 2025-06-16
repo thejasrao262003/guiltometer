@@ -64,9 +64,9 @@ Define and create the following tables using SQLAlchemy or Alembic:
 - created_at
 
 ### 3. 🔄 Database Setup
-- [ ] Create local PostgreSQL DB
-- [ ] Create tables via Alembic or SQLAlchemy
-- [ ] Seed test user + task for local dev
+- [x] Create local PostgreSQL DB
+- [x] Create tables via Alembic or SQLAlchemy
+- [x] Seed test user + task for local dev
 
 ---
 
@@ -87,8 +87,8 @@ Define and create the following tables using SQLAlchemy or Alembic:
 ---
 
 ## 📌 Output by End of Week
-- [ ] Working FastAPI app running locally
-- [ ] PostgreSQL schema defined and running
+- [x] Working FastAPI app running locally
+- [x] PostgreSQL schema defined and running
 - [ ] Test data inserted and verified via simple query
 
 ---

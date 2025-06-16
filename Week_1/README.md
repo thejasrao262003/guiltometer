@@ -9,8 +9,8 @@ This week is about getting the foundational backend ready. The goal is to prepar
 ## ✅ Goals for Week 1
 
 ### 1. 🔧 FastAPI Project Bootstrap
-- [ ] Create virtual environment and install `fastapi`, `uvicorn`, `sqlalchemy`, `psycopg2-binary`, `alembic`
-- [ ] Scaffold the project:
+- [x] Create virtual environment and install `fastapi`, `uvicorn`, `sqlalchemy`, `psycopg2-binary`, `alembic`
+- [x] Scaffold the project:
   ```
   app/
     ├── main.py

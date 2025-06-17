@@ -2,12 +2,21 @@ from fastapi import APIRouter, Depends
 from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas.weekly_reports import WeeklyReportCreate, WeeklyReportUpdate, WeeklyReportOut
-from app.services.weekly_reports import *
+from app.services.weekly_reports import (
+    create_weekly_report,
+    update_weekly_report,
+    delete_weekly_report,
+    get_weekly_reports_by_task,
+    get_weekly_report_detail
+)
 from app.database import get_db
 from app.utils.auth import get_current_user
 from app.models.users import User
 
-router = APIRouter(tags=["Weekly Report"])
+router = APIRouter(
+    prefix="/weekly-reports",
+    tags=["Weekly Reports"]
+)
 
 @router.post("", response_model=WeeklyReportOut)
 async def create_weekly_report_route(

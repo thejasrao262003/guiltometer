@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 from uuid import UUID
 from datetime import date, datetime
-from typing import Optional
+from typing import Optional, Dict, Any
 
 class WeeklyReportBase(BaseModel):
     week_start_date: date
-    guilt_score: Optional[int] = None
+    metrics: Dict[str, Any]  # Flexible dynamic metrics
     analysis: str
 
 class WeeklyReportCreate(WeeklyReportBase):
@@ -13,7 +13,7 @@ class WeeklyReportCreate(WeeklyReportBase):
 
 class WeeklyReportUpdate(BaseModel):
     week_start_date: Optional[date] = None
-    guilt_score: Optional[int] = None
+    metrics: Optional[Dict[str, Any]] = None
     analysis: Optional[str] = None
 
 class WeeklyReportOut(WeeklyReportBase):

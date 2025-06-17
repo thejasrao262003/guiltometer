@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from fastapi import HTTPException
 from uuid import UUID
+from typing import List, Dict, Any
 
 async def create_weekly_report(db: AsyncSession, report_create: WeeklyReportCreate) -> WeeklyReport:
     new_report = WeeklyReport(**report_create.dict())
@@ -12,9 +13,10 @@ async def create_weekly_report(db: AsyncSession, report_create: WeeklyReportCrea
     await db.refresh(new_report)
     return new_report
 
-async def update_weekly_report(db: AsyncSession, report_id: UUID, report_update: WeeklyReportUpdate):
+async def update_weekly_report(db: AsyncSession, report_id: UUID, report_update: WeeklyReportUpdate) -> WeeklyReport:
     result = await db.execute(select(WeeklyReport).where(WeeklyReport.id == report_id))
     report = result.scalars().first()
+
     if not report:
         raise HTTPException(status_code=404, detail="Report not found")
     
@@ -25,9 +27,10 @@ async def update_weekly_report(db: AsyncSession, report_id: UUID, report_update:
     await db.refresh(report)
     return report
 
-async def delete_weekly_report(db: AsyncSession, report_id: UUID):
+async def delete_weekly_report(db: AsyncSession, report_id: UUID) -> Dict[str, str]:
     result = await db.execute(select(WeeklyReport).where(WeeklyReport.id == report_id))
     report = result.scalars().first()
+
     if not report:
         raise HTTPException(status_code=404, detail="Report not found")
     
@@ -35,13 +38,15 @@ async def delete_weekly_report(db: AsyncSession, report_id: UUID):
     await db.commit()
     return {"message": "Weekly report deleted successfully"}
 
-async def get_weekly_reports_by_task(db: AsyncSession, task_id: UUID):
+async def get_weekly_reports_by_task(db: AsyncSession, task_id: UUID) -> List[WeeklyReport]:
     result = await db.execute(select(WeeklyReport).where(WeeklyReport.task_id == task_id))
     return result.scalars().all()
 
-async def get_weekly_report_detail(db: AsyncSession, report_id: UUID):
+async def get_weekly_report_detail(db: AsyncSession, report_id: UUID) -> WeeklyReport:
     result = await db.execute(select(WeeklyReport).where(WeeklyReport.id == report_id))
     report = result.scalars().first()
+
     if not report:
         raise HTTPException(status_code=404, detail="Report not found")
+    
     return report

@@ -9,7 +9,7 @@ import uuid
 
 router = APIRouter(tags=["Daily Logs"])
 
-@router.post("/logs/{task_id}", response_model=DailyLogOut)
+@router.post("/{task_id}", response_model=DailyLogOut)
 async def create_daily_log_route(
     task_id: uuid.UUID,
     log_create: DailyLogCreate,
@@ -19,7 +19,7 @@ async def create_daily_log_route(
     return await create_daily_log(db=db, log_create=log_create, task_id=task_id)
 
 
-@router.patch("/logs/{log_id}", response_model=dict)
+@router.patch("/{log_id}", response_model=dict)
 async def update_daily_log_route(
     log_id: uuid.UUID,
     task_id: uuid.UUID,
@@ -30,7 +30,7 @@ async def update_daily_log_route(
     return await update_daily_log(db=db, log_id=log_id, task_id=task_id, log_update=log_update)
 
 
-@router.delete("/logs/{log_id}", response_model=dict)
+@router.delete("/{log_id}", response_model=dict)
 async def delete_daily_log_route(
     log_id: uuid.UUID,
     task_id: uuid.UUID,
@@ -40,7 +40,7 @@ async def delete_daily_log_route(
     return await delete_daily_log(db=db, log_id=log_id, task_id=task_id)
 
 
-@router.get("/logs/task/{task_id}", response_model=list[DailyLogOut])
+@router.get("/task/{task_id}", response_model=list[DailyLogOut])
 async def get_all_daily_logs_route(
     task_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
@@ -49,7 +49,7 @@ async def get_all_daily_logs_route(
     return await get_all_daily_logs(db=db, task_id=task_id)
 
 
-@router.get("/logs/{log_id}", response_model=DailyLogOut)
+@router.get("/{log_id}", response_model=DailyLogOut)
 async def get_single_daily_log_route(
     log_id: uuid.UUID,
     task_id: uuid.UUID,

@@ -15,7 +15,7 @@ from app.models.users import User
 
 router = APIRouter(tags=["Roadmap"])
 
-@router.post("/roadmaps", response_model=RoadmapOut)
+@router.post("", response_model=RoadmapOut)
 async def create_roadmap_route(
     roadmap_create: RoadmapCreate,
     user: User = Depends(get_current_user),
@@ -23,7 +23,7 @@ async def create_roadmap_route(
 ):
     return await create_roadmap(db, roadmap_create)
 
-@router.patch("/roadmaps/{roadmap_id}")
+@router.patch("/{roadmap_id}")
 async def update_roadmap_route(
     roadmap_id: UUID,
     roadmap_update: RoadmapUpdate,
@@ -32,7 +32,7 @@ async def update_roadmap_route(
 ):
     return await update_roadmap(db, roadmap_id, roadmap_update)
 
-@router.delete("/roadmaps/{roadmap_id}")
+@router.delete("/{roadmap_id}")
 async def delete_roadmap_route(
     roadmap_id: UUID,
     user: User = Depends(get_current_user),
@@ -40,7 +40,7 @@ async def delete_roadmap_route(
 ):
     return await delete_roadmap(db, roadmap_id)
 
-@router.get("/roadmaps/task/{task_id}", response_model=list[RoadmapOut])
+@router.get("/task/{task_id}", response_model=list[RoadmapOut])
 async def get_roadmaps_by_task_route(
     task_id: UUID,
     user: User = Depends(get_current_user),
@@ -48,7 +48,7 @@ async def get_roadmaps_by_task_route(
 ):
     return await get_roadmaps_by_task(db, task_id)
 
-@router.get("/roadmaps/{roadmap_id}", response_model=RoadmapOut)
+@router.get("/{roadmap_id}", response_model=RoadmapOut)
 async def get_roadmap_detail_route(
     roadmap_id: UUID,
     user: User = Depends(get_current_user),
